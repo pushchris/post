@@ -7,12 +7,11 @@ module.exports = function(url, data, method) {
     if (data == null)
         data = {};
 
-    var form = dom('<form>').attr({
-        method: method,
-        action: url
-     }).css({
-        display: 'none'
-     });
+    var form = document.createElement('form');
+    dom(form)
+        .attr('method', method)
+        .attr('action', url);
+    dom(form).css('display', 'none');
 
     var addData = function(name, data) {
         if (isArray(data)) {
@@ -27,11 +26,12 @@ module.exports = function(url, data, method) {
                 }
             }
         } else if (data != null) {
-            form.append(dom('<input>').attr({
-              type: 'hidden',
-              name: String(name),
-              value: String(data)
-            }));
+            var input = document.createElement('input');
+            dom(input)
+              .attr('type', 'hidden')
+              .attr('name', String(name))
+              .attr('value', String(data));
+            dom(form).append(dom(input));
         }
     };
 
@@ -40,6 +40,6 @@ module.exports = function(url, data, method) {
             addData(key, data[key]);
         }
     }
-
-    return form.appendTo('body');
+    
+    form.submit();
 }
