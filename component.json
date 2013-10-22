@@ -1,0 +1,17 @@
+{
+    "name": "post",
+    "repo": "whyohwhyamihere/post",
+    "description": "Non AJAX post",
+    "version": "0.0.1",
+    "keywords": [],
+    "dependencies": {
+        "component/dom": "*",
+        "yields/isArray": "*"
+    },
+    "development": {},
+    "license": "MIT",
+    "main": "index.js",
+    "scripts": [
+        "index.js"
+    ]
+}
